@@ -1,2 +1,12 @@
+# Environment variables
+.env
+
+# Word documents
+*.docx
+~$*.docx
+
+# Virtual environment
 venv/
-__pycache__/
+
+# JSON data
+*.json
