@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from datetime import date
 
 #load the variable paths
 load_dotenv(dotenv_path = ".env")
@@ -99,11 +100,22 @@ def extract_video_data(video_ids):
     
     except requests.exceptions.RequestException as e:
         raise e
+    
+def save_to_json(extracted_data):
+    os.makedirs("./data", exist_ok=True)
+    file_path = f"./data/yt_data_{date.today()}.json"
+
+    with open(file_path, "w", encoding="utf-8") as json_outfile:
+        json.dump(extracted_data, json_outfile, indent=4, ensure_ascii = False)
+
+    print(f"Saved successfully to {file_path}")
 if __name__ == "__main__":  
     #print("API KEY:", API_KEY)
     #print("Playlist ID:", get_playlist_id())
     playlistId = get_playlist_id()
     video_ids = get_video_ids(playlistId)
     print(extract_video_data(video_ids))
+    extracted_data = extract_video_data(video_ids)
+    save_to_json(extracted_data)
     
 
