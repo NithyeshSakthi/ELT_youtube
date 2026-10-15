@@ -9,4 +9,6 @@
 venv/
 
 # JSON data
-*.json
+#*.json
+__pycache__/
+logs/
