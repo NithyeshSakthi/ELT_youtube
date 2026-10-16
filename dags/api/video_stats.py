@@ -1,3 +1,4 @@
+import os
 import requests
 import json   
 from datetime import date
@@ -66,7 +67,7 @@ def get_video_ids(playlistId):
 def batch_list(video_id_lst, batch_size):
     for video_id in range(0, len(video_id_lst), batch_size):
         yield video_id_lst[video_id: video_id + batch_size]
-
+@task  
 def extract_video_data(video_ids):
 
     extracted_data = []
