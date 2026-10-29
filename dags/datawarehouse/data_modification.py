@@ -73,7 +73,7 @@ def delete_rows(cur, conn, schema, ids_to_delete):
         cur.execute(
             f"""
             DELETE FROM {schema}.{table}
-            WHERE "Video_ID" IN {ids_to_delte};
+            WHERE "Video_ID" IN {ids_to_delete};
 
             """
         )
@@ -81,5 +81,5 @@ def delete_rows(cur, conn, schema, ids_to_delete):
         conn.commit()
         logger.info(f"Delete rows with Video_IDs: {ids_to_delete}")
     except Exception as e:
-        logger.error(f"Error deleting rows with Video_IDs: {ids_to_delte} -{e}")
+        logger.error(f"Error deleting rows with Video_IDs: {ids_to_delete} -{e}")
         raise e
